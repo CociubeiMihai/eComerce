@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import "../styles/LogIn.css";
-import { useNavigate } from "react-router-dom";
-import { authorize } from "../service/LoginService";
 import { useState } from "react";
-import background from "../images/img1.jpg";
+import background from "../images/img4.jpg";
 import styled, { css } from "styled-components/macro";
+import { register } from "../service/RegisterService";
+
+
+
 
 const Bacground = styled.div`
   background-position: center;
@@ -14,45 +16,26 @@ const Bacground = styled.div`
   width: 100%;
 `;
 
-const Login = ({ usrLogg }) => {
-  let navigate = useNavigate();
-  const [nume, setNume] = useState("");
-  const [parola, setParola] = useState("");
-  const [rol, setRol] = useState("");
 
-  const handleSubmit = (e) => {
+const Register = () => {
+
+    const [nume, setNume] = useState("");
+    const [parola, setParola] = useState("");
+
+const handleSubmit = (e) => {
     e.preventDefault();
     //console.log(nume, parola);
-    authorize(nume, parola).then((res) => {
-      if (res.data.rol === "ADMIN") {
-        navigate("/admin");
-        usrLogg(res.data.id);
-        localStorage.setItem("rol", JSON.stringify("ADMIN"));
-        localStorage.setItem("id", JSON.stringify(res.data.id));
-      } else if (res.data.rol === "USER") {
-        navigate("/user");
-        usrLogg(res.data.id);
-        localStorage.setItem("rol", JSON.stringify("USER"));
-        localStorage.setItem("id", JSON.stringify(res.data.id));
-      } else {
-        alert("Gresit tati");
-        setNume("");
-        setParola("");
-      }
-    });
+    register(nume, parola);
+    setNume("");
+    setParola("");
   };
-
-  useEffect(() => {
-    localStorage.setItem("rol", JSON.stringify(rol));
-    localStorage.setItem("id", JSON.stringify(""));
-  }, [rol]);
 
   return (
     <Bacground style={{ backgroundImage: `url(${background})` }}>
-      <div style={{ width: "100vh", height: "100vh" }}>
+        <div style={{ width: "100vh", height: "100vh" }}>
         <form>
           <div class="center">
-            <h1>Login</h1>
+            <h1>Register</h1>
             <form method="post">
               <div class="txt_field">
                 <input
@@ -77,13 +60,13 @@ const Login = ({ usrLogg }) => {
                 <span></span>
                 <label>Password</label>
               </div>
-              <input type="submit" value="Login" onClick={handleSubmit}></input>
+              <input type="submit" value="Register" onClick={handleSubmit}></input>
             </form>
           </div>
         </form>
-      </div>
+        </div>
     </Bacground>
-  );
-};
+  )
+}
 
-export default Login;
+export default Register
