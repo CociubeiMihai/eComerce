@@ -8,6 +8,7 @@ import com.example.magazin.service.ProdusService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -34,7 +35,7 @@ public class ProdusServiceImp implements ProdusService {
 
     @Override
     public List<Produs> findAll() {
-        List<Produs> produsList=(List<Produs>)produsRepository.findAll();
+        List<Produs> produsList=(List<Produs>)produsRepository.findByCantitateGreaterThan(0);
         return produsList;
     }
 
@@ -58,6 +59,24 @@ public class ProdusServiceImp implements ProdusService {
     @Override
     public Produs findById(Long id) {
         return produsRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Produs> findByNumePartial(String nume) {
+        List<Produs> produsList = new LinkedList<>();
+        for(Produs p: findAll()){
+            if(p.getNume().contains(nume))
+                produsList.add(p);
+        }
+        return produsList;
+    }
+
+    @Override
+    public List<Produs> findByPrice(String caracteristica, int value) {
+        if(caracteristica.equals(">"))
+            return produsRepository.findByPretIsGreaterThan(value);
+
+        return produsRepository.findByPretIsLessThan(value);
     }
 
 }

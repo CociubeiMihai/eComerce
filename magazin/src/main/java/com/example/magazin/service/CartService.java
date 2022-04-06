@@ -1,7 +1,7 @@
 package com.example.magazin.service;
 
+import com.example.magazin.dto.AddCartDto;
 import com.example.magazin.model.Cart;
-import com.example.magazin.model.Persoana;
 import com.example.magazin.model.Produs;
 import org.springframework.stereotype.Component;
 
@@ -14,4 +14,7 @@ public interface CartService {
     Cart save(Cart cart);
     List<Produs> findAllProducts(Long idPersoana);
 
+    Cart addToCart(AddCartDto addCartDto);
+    Cart emptyCart(Long idPersoana);
+    int total(Long idPersoana);
 }

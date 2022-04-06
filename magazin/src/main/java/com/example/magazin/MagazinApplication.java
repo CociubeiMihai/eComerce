@@ -11,12 +11,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class MagazinApplication{
 
 	public static void main(String[] args) {
-		//SpringApplication.run(MagazinApplication.class, args);
-		SpringApplicationBuilder builder = new SpringApplicationBuilder(MagazinApplication.class);
+		SpringApplication.run(MagazinApplication.class, args);
+		/*SpringApplicationBuilder builder = new SpringApplicationBuilder(MagazinApplication.class);
 
 		builder.headless(false);
 
-		ConfigurableApplicationContext context = builder.run(args);
+		ConfigurableApplicationContext context = builder.run(args);*/
 	}
 
 }

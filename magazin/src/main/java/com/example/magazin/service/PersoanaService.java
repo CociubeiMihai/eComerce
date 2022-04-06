@@ -15,6 +15,7 @@ public interface PersoanaService {
     Persoana findFirstByNameAndPassword(AuthDTO dto);
     List<Persoana> findAll();
     Persoana deletePersoana(Long id);
+    Persoana save(AuthDTO persoana);
     Persoana save(Persoana persoana);
     Persoana findByNume(String nume);
 

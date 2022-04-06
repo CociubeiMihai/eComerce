@@ -23,6 +23,7 @@ public class Produs {
     private String descriere;
     private int recenzie;
     private int cantitate;
+
     //private cv poza;
 
 }

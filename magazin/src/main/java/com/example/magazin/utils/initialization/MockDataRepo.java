@@ -1,6 +1,7 @@
 package com.example.magazin.utils.initialization;
 
 import com.example.magazin.constants.Marime;
+import com.example.magazin.model.Card;
 import com.example.magazin.model.Cart;
 import com.example.magazin.model.Persoana;
 import com.example.magazin.model.Produs;
@@ -21,6 +22,7 @@ public class MockDataRepo {
         int k = 0;
         List<Persoana> persoane = new LinkedList<>();
         for ( i = 1L; i < noOfEntities; i++) {
+
             List<Produs> produses = new LinkedList<>();
             produses.add(produsList.get(k));
             produses.add(produsList.get(k + 4));
@@ -65,6 +67,15 @@ public class MockDataRepo {
         }
 
         return echipamentProtectieList;
+    }
+
+    public List<Card> initCarduri(){
+        List<Card> cards = new LinkedList<>();
+
+        for(int i = 0; i < noOfEntities ; i++) {
+            cards.add(Card.builder().ccv(120 + i).number(4444444444444440L + i).balance(i * 250).build());
+        }
+        return cards;
     }
 
 }

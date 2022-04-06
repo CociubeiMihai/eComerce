@@ -17,5 +17,6 @@ public interface ProdusService {
     Produs deleteProduct(Long id);
     Produs save(Produs echipamentProtectie);
     Produs findById(Long id);
-
+    List<Produs> findByNumePartial(String nume);
+    List<Produs> findByPrice(String caracteristica, int value);
 }

@@ -11,4 +11,7 @@ public interface  ProdusRepository extends CrudRepository<Produs,Long> {
 
     Produs findByNume(String nume);
     List<Produs> findByPretIsBetween(int low, int high);
+    List<Produs> findByPretIsGreaterThan(int value);
+    List<Produs> findByPretIsLessThan(int value);
+    List<Produs> findByCantitateGreaterThan(int val);
 }

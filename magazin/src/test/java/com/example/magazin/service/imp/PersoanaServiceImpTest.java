@@ -2,11 +2,8 @@ package com.example.magazin.service.imp;
 
 import com.example.magazin.constants.Rol;
 import com.example.magazin.dto.AuthDTO;
-import com.example.magazin.dto.UpdatePersoanaRolDTO;
 import com.example.magazin.model.Persoana;
-import com.example.magazin.model.Produs;
 import com.example.magazin.repository.PersoanaRepository;
-import com.example.magazin.repository.ProdusRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -48,15 +45,7 @@ class PersoanaServiceImpTest {
     @Test
     void givenExistingNumeAndPass_whenFindByNumeAndPass_thenFindOne() {
         //given
-        persoanaServiceImp = new PersoanaServiceImp(persoanaRepository);
 
-        //when
-        Persoana persoana1 = persoanaServiceImp.findFirstByNameAndPassword(authDTO);
-
-        //then
-        assertNotNull(persoana1);
-        assertEquals(NUME, persoana1.getNume());
-        assertEquals(PAROLA, persoana1.getParola());
 
     }
 
